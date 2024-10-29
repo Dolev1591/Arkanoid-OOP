@@ -1,0 +1,26 @@
+<project name="ArkanoidGameDolev" default="run" basedir=".">
+
+    <!-- Define classpath for compilation & execution -->
+    <property name="classpath" value="out/production/ass3OOP;biuoop-1.4 (8).jar" />
+
+    <!-- Compile all Java files under `src`, and export .class files into `out/production/ass3OOP` -->
+    <target name="compile">
+        <mkdir dir="out/production/ass3OOP"/>
+        <javac classpath="${classpath}" srcdir="src" destdir="out/production/ass3OOP" includeantruntime="false"/>
+    </target>
+
+    <!-- Clean the output directory -->
+    <target name="clean">
+        <delete dir="out/production/ass3OOP"/>
+    </target>
+
+    <!-- Run the main Java class, depends on compile target -->
+    <target name="run" depends="compile">
+        <java classname="Ass6Game" classpath="${classpath}" fork="true">
+            <!-- Pass command-line arguments -->
+            <arg line="${args}"/>
+        </java>
+    </target>
+
+
+</project>
